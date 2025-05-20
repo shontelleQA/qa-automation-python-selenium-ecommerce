@@ -17,6 +17,7 @@ venv.bak/
 
 # PyCharm
 .idea/
+.idea\
 
 # macOS and system files
 .DS_Store
