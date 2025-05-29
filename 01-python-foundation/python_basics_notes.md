@@ -27,6 +27,7 @@ This section documents the Python programming fundamentals I practiced as part o
 - `bmi_calculator_v1.py` – basic version using if/else and f-string output  
 - `bmi_calculator_v2.py` – improved version with `.format()`, rounding, and better UX  
 - `even_number_checker.py` – checks if user input is even or not using modulus  
+- `generate_random_emails.py` – simulates random email generation using dynamic strings and domain selection; output saved to CSV. This exercise reinforced working with loops, string manipulation, file writing, and randomness — all useful in data-driven testing.
 - `process_products_exercises.py` – multiple logic exercises to filter and validate product data for a mock e-commerce platform
 
 
