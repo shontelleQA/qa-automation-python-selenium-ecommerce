@@ -1,49 +1,26 @@
-# 🧪 Raw Test Cases
+# E-Commerce Workflow Tests
 
-This folder contains **scripted but unstructured** test cases for common e-commerce workflows.
+This directory contains UI automation tests focused on simulating and validating key user flows for an e-commerce site. It serves as a bridge between foundational Selenium skills and real-world test architecture.
 
-These tests:
+## 📂 Folder Structure
 
-- Automate realistic scenarios using **Selenium WebDriver + Python**
-- Are written as **procedural scripts**
-- Do **not** use a formal framework (e.g., PyTest or Page Object Model)
+- **raw-tests/** — Basic scripts that demonstrate individual workflows with minimal abstraction
+- **automated-tests/** — Clean, reusable scripts following early-stage framework patterns (e.g., naming conventions, test case IDs)
 
----
+## 🧪 Tech Stack
 
-## 🎯 Purpose
+- Python 3.x
+- Selenium WebDriver
+- ChromeDriver (local browser automation)
 
-Demonstrate the ability to automate real-world workflows from scratch using Python & Selenium  
-— before migrating to a more maintainable structure.
+## 🧭 Test Types
 
----
+- Registration and login flows
+- Coupon application and cart validation
+- Full guest checkout (automated-tests only)
 
-## 📋 Test Cases
+## 🚧 Future Enhancements
 
-### ✅ Register New User
-- Navigate to My Account page
-- Generate a random email ending with `@testlikeagirl.com` and enter it with a fixed password
-- Submit the registration form
-- Confirm the Logout button appears (user is logged in)
-
-### ✅ Login with Invalid User
-- Navigate to My Account page
-- Enter an invalid email and password
-- Submit the login form
-- Verify that the expected error message appears
-
-### ✅ Verify Free Coupon
-- Add an item to the cart from the homepage
-- Click 'View Cart' to open the cart page
-- Expand the “Add a coupon” section
-- Enter a valid coupon and apply it
-- Confirm cart total is reduced to `$0.00`
-
----
-
-## 📍 Notes
-These tests are written as procedural scripts for clarity and learning purposes.
-More advanced, maintainable tests will appear in the `automated-tests/` folder using a proper framework.
-
-- One debugging version of the `Verify Free Coupon` test is included to assist with troubleshooting.
-- Clean versions are retained for portfolio display.
-- Fully framework structured and reusable tests will be built in the `../automated-tests/` folder next.
+- Transition all raw tests into Page Object Model (POM)
+- Introduce PyTest structure and fixtures
+- Expand API coverage for back-end validation
