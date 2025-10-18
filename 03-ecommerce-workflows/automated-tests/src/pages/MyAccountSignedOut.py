@@ -1,27 +1,21 @@
-# src/pages/MyAccountSignedOut.py
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from .locators.MyAccountSignedOutLocators import MyAccountSignedOutLocators as L
+from src.selenium_extended import SeleniumExtended   # 👈 new import
 
 class MyAccountSignedOut:
-    """
-    This class represents the My Account page when a user is signed out.
-    It holds all the actions you can do on that page (like login or register).
-    """
-
     def __init__(self, driver):
-        # driver = the browser (from your fixture)
         self.driver = driver
+        self.sl = SeleniumExtended(driver)           # 👈 new line
 
-    # Go to the My Account page
     def go_to_my_account(self):
-        pass  # we'll add self.driver.get("...") later
+        pass
 
-    # Type username into the login box
     def input_login_username(self, username):
-        pass  # will fill this in once locators are ready
+        self.sl.wait_and_input_text(L.LOGIN_USERNAME, username)
 
-    # Type password into the password box
     def input_login_password(self, password):
-        pass
+        self.sl.wait_and_input_text(L.LOGIN_PASSWORD, password)
 
-    # Click the login button
     def click_login_button(self):
-        pass
+        self.sl.wait_and_click(L.LOGIN_BUTTON)
