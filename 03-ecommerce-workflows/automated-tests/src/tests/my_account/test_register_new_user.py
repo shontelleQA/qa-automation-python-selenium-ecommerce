@@ -1,6 +1,8 @@
 import pytest
 from src.pages.MyAccountSignedOut import MyAccountSignedOut
 from src.helpers.generic_helpers import generate_random_email_and_password
+from src.pages.MyAccountSignedIn import MyAccountSignedIn
+
 
 
 
@@ -37,4 +39,9 @@ class TestRegisterNewUser:
 
         # 🧩 Expected Result:
         # After successful registration, the user should be logged in automatically
-        # (we'll verify this in Lesson 134 when we add assertions)
+
+        # 4️⃣ Verify the user is logged in (My Account page visible)
+        my_account_in = MyAccountSignedIn(self.driver)
+        my_account_in.verify_user_is_signed_in()
+
+        print("✅ User registration successful and logged in!")
