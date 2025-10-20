@@ -55,3 +55,16 @@ class SeleniumExtended:
         WebDriverWait(self.driver, timeout).until(
             EC.text_to_be_present_in_element(locator, text)
         )
+
+def wait_until_element_is_visible(self, locator, timeout=None):
+    """
+    Wait until a given element is visible on the page.
+    """
+    if timeout:
+        wait_time = timeout
+    else:
+        wait_time = self.timeout
+
+    WebDriverWait(self.driver, wait_time).until(
+        EC.visibility_of_element_located(locator)
+    )
