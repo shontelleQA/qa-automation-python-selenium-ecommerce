@@ -2,6 +2,8 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
+
 class SeleniumExtended:
     """
     A helper class that gives us reusable Selenium actions
@@ -28,15 +30,21 @@ class SeleniumExtended:
         element.send_keys(text)
 
     def wait_and_click(self, locator, timeout=None):
-        """
-        Wait for an element to appear, then click it.
-        Example:
-            self.sl.wait_and_click(L.LOGIN_BUTTON)
-        """
+        import logging as logger
         timeout = timeout if timeout else self.default_timeout
+
         element = WebDriverWait(self.driver, timeout).until(
-            EC.visibility_of_element_located(locator)
+            EC.element_to_be_clickable(locator)
         )
+
+        # 👇 Scroll the element into view before clicking (fixes intercept)
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+
+        # 👇 Small buffer delay for animations/banners (esp. in headless mode)
+        import time
+        time.sleep(0.5)
+
+        logger.debug(f"Clicking element: {locator}")
         element.click()
 
     def wait_until_element_contains_text(self, locator, text, timeout=None):
