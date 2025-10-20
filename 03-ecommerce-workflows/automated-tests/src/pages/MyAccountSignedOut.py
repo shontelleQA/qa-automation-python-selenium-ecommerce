@@ -24,3 +24,12 @@ class MyAccountSignedOut:
 
     def click_login_button(self):
         self.sl.wait_and_click(L.LOGIN_BUTTON)
+
+    def wait_until_error_is_displayed(self, expected_error):
+        """
+        Wait until the expected error message text appears on the page.
+        """
+        self.sl.wait_until_element_contains_text(
+            L.ERRORS_UL,
+            expected_error
+        )
