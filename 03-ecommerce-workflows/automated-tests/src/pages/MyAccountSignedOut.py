@@ -27,6 +27,19 @@ class MyAccountSignedOut:
     def click_login_button(self):
         self.sl.wait_and_click(L.LOGIN_BUTTON)
 
+    # -------------------------------
+    # 🧩 Registration section
+    # -------------------------------
+    def input_register_email(self, email):
+        self.sl.wait_and_input_text(L.REGISTER_EMAIL, email)
+
+    def input_register_password(self, password):
+        self.sl.wait_and_input_text(L.REGISTER_PASSWORD, password)
+
+    def click_register_button(self):
+        self.sl.wait_and_click(L.REGISTER_BUTTON)
+
+
     def wait_until_error_is_displayed(self, expected_error):
         """
         Wait until the expected error message text appears on the page.
