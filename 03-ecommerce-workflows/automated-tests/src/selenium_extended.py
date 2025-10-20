@@ -1,7 +1,8 @@
 # selenium_extended.py
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+import logging as logger
+import time
 
 
 class SeleniumExtended:
@@ -11,8 +12,6 @@ class SeleniumExtended:
     """
 
     def __init__(self, driver, default_timeout=10):
-        # This runs automatically when we create the class.
-        # 'driver' is the browser, and default_timeout is how long to wait.
         self.driver = driver
         self.default_timeout = default_timeout
 
@@ -30,18 +29,16 @@ class SeleniumExtended:
         element.send_keys(text)
 
     def wait_and_click(self, locator, timeout=None):
-        import logging as logger
+        """
+        Wait for an element to be clickable, scroll it into view, and click.
+        """
         timeout = timeout if timeout else self.default_timeout
-
         element = WebDriverWait(self.driver, timeout).until(
             EC.element_to_be_clickable(locator)
         )
 
-        # 👇 Scroll the element into view before clicking (fixes intercept)
+        # Scroll into view before clicking (fixes intercepted click)
         self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
-
-        # 👇 Small buffer delay for animations/banners (esp. in headless mode)
-        import time
         time.sleep(0.5)
 
         logger.debug(f"Clicking element: {locator}")
@@ -56,15 +53,11 @@ class SeleniumExtended:
             EC.text_to_be_present_in_element(locator, text)
         )
 
-def wait_until_element_is_visible(self, locator, timeout=None):
-    """
-    Wait until a given element is visible on the page.
-    """
-    if timeout:
-        wait_time = timeout
-    else:
-        wait_time = self.timeout
-
-    WebDriverWait(self.driver, wait_time).until(
-        EC.visibility_of_element_located(locator)
-    )
+    def wait_until_element_is_visible(self, locator, timeout=None):
+        """
+        Wait until the element located by 'locator' is visible on the page.
+        """
+        timeout = timeout if timeout else self.default_timeout
+        WebDriverWait(self.driver, timeout).until(
+            EC.visibility_of_element_located(locator)
+        )
