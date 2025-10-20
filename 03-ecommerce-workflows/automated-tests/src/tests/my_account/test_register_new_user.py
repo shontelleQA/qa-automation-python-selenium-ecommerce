@@ -1,5 +1,7 @@
 import pytest
 from src.pages.MyAccountSignedOut import MyAccountSignedOut
+from src.helpers.generic_helpers import generate_random_email_and_password
+
 
 
 @pytest.mark.usefixtures("init_driver")
@@ -18,9 +20,17 @@ class TestRegisterNewUser:
         # 2️⃣ Go to My Account page
         my_account.go_to_my_account()
 
-        # 3️⃣ Fill in registration form
-        my_account.input_register_email("test1@example.com")  # temporary static email
-        my_account.input_register_password("Password123!")
+        # 3️⃣ Fill in registration form (now with random credentials)
+        from src.helpers.generic_helpers import generate_random_email_and_password
+
+        rand_info = generate_random_email_and_password()
+        email = rand_info["email"]
+        password = rand_info["password"]
+
+        print(f"🧪 Using test user: {email} / {password}")
+
+        my_account.input_register_email(email)
+        my_account.input_register_password(password)
 
         # 4️⃣ Click the register button
         my_account.click_register_button()
