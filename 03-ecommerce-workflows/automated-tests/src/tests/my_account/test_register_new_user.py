@@ -6,17 +6,25 @@ from src.pages.MyAccountSignedOut import MyAccountSignedOut
 @pytest.mark.tcid13
 class TestRegisterNewUser:
 
+    @pytest.mark.tcid13
     def test_register_valid_new_user(self):
+        """
+        TCID-13: Verify a new user can register successfully.
+        """
+
+        # 1️⃣ Create the page object
         my_account = MyAccountSignedOut(self.driver)
 
-        # 1️⃣ Go to My Account page
+        # 2️⃣ Go to My Account page
         my_account.go_to_my_account()
 
-        # 2️⃣ Fill in email + password
-        my_account.input_register_email("test1@school.com")
-        my_account.input_register_password("1234abc")
+        # 3️⃣ Fill in registration form
+        my_account.input_register_email("test1@example.com")  # temporary static email
+        my_account.input_register_password("Password123!")
 
-        # 3️⃣ Click Register
+        # 4️⃣ Click the register button
         my_account.click_register_button()
 
-        # 4️⃣ (Verification will come later)
+        # 🧩 Expected Result:
+        # After successful registration, the user should be logged in automatically
+        # (we'll verify this in Lesson 134 when we add assertions)
