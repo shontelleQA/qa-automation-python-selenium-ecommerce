@@ -38,3 +38,12 @@ class SeleniumExtended:
             EC.visibility_of_element_located(locator)
         )
         element.click()
+
+    def wait_until_element_contains_text(self, locator, text, timeout=None):
+        """
+        Wait until the given element contains the expected text.
+        """
+        timeout = timeout if timeout else self.default_timeout
+        WebDriverWait(self.driver, timeout).until(
+            EC.text_to_be_present_in_element(locator, text)
+        )
