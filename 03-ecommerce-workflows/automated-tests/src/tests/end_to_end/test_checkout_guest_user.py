@@ -16,8 +16,7 @@ class TestE2ECheckoutGuestUser:
 
         # Step plan (no-op placeholders for now)
         home.go_to_home_page()
-        # home.add_first_product_to_cart()
-        # home.add_first_product_to_cart()
+        home.click_first_add_to_cart_button()
         # cart.go_to_cart()
         # cart.apply_coupon("QA100")
         # cart.select_free_shipping()
