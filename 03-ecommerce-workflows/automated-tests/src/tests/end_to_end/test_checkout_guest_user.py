@@ -15,7 +15,7 @@ class TestE2ECheckoutGuestUser:
         order_received = OrderReceivedPage(self.driver)
 
         # Step plan (no-op placeholders for now)
-        # home.go_to_home_page()
+        home.go_to_home_page()
         # home.add_first_product_to_cart()
         # home.add_first_product_to_cart()
         # cart.go_to_cart()
