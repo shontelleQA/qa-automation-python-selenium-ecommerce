@@ -1,17 +1,16 @@
 from src.helpers.config_helpers import get_base_url
-from src.selenium_extended import SeleniumExtended
+from src.pages.HomePageLocators import HomePageLocators
+from src.helpers.selenium_extended import SeleniumExtended
 
-class HomePage:
-    ENDPOINT = "/"
 
+class HomePage(HomePageLocators):
     def __init__(self, driver):
         self.driver = driver
         self.sl = SeleniumExtended(driver)
 
     def go_to_home_page(self):
-        self.driver.get(get_base_url() + self.ENDPOINT)
+        base_url = get_base_url()
+        self.driver.get(base_url)
 
-    # to be added in Part 2:
-    # - click_first_product()
-    # - add_first_product_to_cart()
-    # - maybe a generic "add_product_to_cart_by_name(name)"
+    def click_first_add_to_cart_button(self):
+        self.sl.wait_and_click(self.ADD_TO_CART_BUTTON)
