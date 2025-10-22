@@ -1,4 +1,9 @@
-from src.selenium_extended import SeleniumExtended
+# OrderReceivedPage.py
+# --------------------
+# Page object for the Order Received (confirmation) page.
+
+from src.helpers.selenium_extended import SeleniumExtended
+from src.pages.locators.OrderReceivedLocators import OrderReceivedLocators
 
 class OrderReceivedPage:
     def __init__(self, driver):
