@@ -61,3 +61,13 @@ class SeleniumExtended:
         WebDriverWait(self.driver, timeout).until(
             EC.visibility_of_element_located(locator)
         )
+
+    def wait_and_get_text(self, locator, timeout=10):
+        """
+        Wait until the element located by 'locator' is visible,
+        then return its text content.
+        """
+        element = WebDriverWait(self.driver, timeout).until(
+            EC.visibility_of_element_located(locator)
+        )
+        return element.text
