@@ -1,9 +1,10 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from .locators.MyAccountSignedOutLocators import MyAccountSignedOutLocators as L
-from src.selenium_extended import SeleniumExtended
+from src.helpers.selenium_extended import SeleniumExtended
 from src.helpers.config_helpers import get_base_url
 import logging as logger
+
 
 
 class MyAccountSignedOut:
