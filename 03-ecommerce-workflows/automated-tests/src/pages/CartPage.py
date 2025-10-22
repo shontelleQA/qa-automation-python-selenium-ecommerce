@@ -3,7 +3,7 @@
 # Page object for the Cart page: handles coupons, shipping, and checkout navigation.
 
 from src.helpers.selenium_extended import SeleniumExtended
-from src.pages.CartPageLocators import CartPageLocators
+from src.pages.locators.CartPageLocators import CartPageLocators
 from src.config.GenericConfigs import GenericConfigs   # we'll create this next
 
 
