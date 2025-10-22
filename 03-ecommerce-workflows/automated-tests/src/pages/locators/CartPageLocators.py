@@ -14,3 +14,8 @@ class CartPageLocators:
 
     # Confirmation message after applying coupon
     CART_PAGE_MESSAGE = (By.CSS_SELECTOR, "div.wc-block-components-notice-banner__content")
+
+    # "Proceed to checkout" button link displayed on the Cart page footer
+    PROCEED_TO_CHECKOUT_BTN = (By.CSS_SELECTOR, "a.checkout-button")
+
+
