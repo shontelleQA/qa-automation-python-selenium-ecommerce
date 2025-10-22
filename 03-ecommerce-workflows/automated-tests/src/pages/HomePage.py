@@ -1,5 +1,5 @@
 from src.helpers.config_helpers import get_base_url
-from src.pages.HomePageLocators import HomePageLocators
+from src.pages.locators.HomePageLocators import HomePageLocators
 from src.helpers.selenium_extended import SeleniumExtended
 
 
