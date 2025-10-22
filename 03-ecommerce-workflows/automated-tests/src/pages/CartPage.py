@@ -4,7 +4,7 @@
 
 from src.helpers.selenium_extended import SeleniumExtended
 from src.pages.locators.CartPageLocators import CartPageLocators
-from src.configs.GenericConfigs import GenericConfigs   # we'll create this next
+from src.configs.generic_configs import GenericConfigs   # we'll create this next
 
 
 class CartPage(CartPageLocators):
