@@ -1,11 +1,8 @@
-# CartPage.py
-# ------------
-# Page object for the Cart page: handles coupons, shipping, and checkout navigation.
-
 from src.helpers.selenium_extended import SeleniumExtended
 from src.pages.locators.CartPageLocators import CartPageLocators
-from src.configs.generic_configs import GenericConfigs   # we'll create this next
-
+from src.configs.generic_configs import GenericConfigs
+from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
+import time
 
 class CartPage(CartPageLocators):
     def __init__(self, driver):
@@ -49,4 +46,14 @@ class CartPage(CartPageLocators):
             f"Expected coupon applied message, got '{success_message}'"
         )
 
-
+    def click_proceed_to_checkout(self):
+        """Click 'Proceed to Checkout' on block-based WooCommerce carts."""
+        retries = 2
+        for attempt in range(retries):
+            try:
+                self.sl.wait_and_click(self.PROCEED_TO_CHECKOUT_BTN, timeout=15)
+                return
+            except (StaleElementReferenceException, TimeoutException):
+                time.sleep(2)
+                if attempt == retries - 1:
+                    raise
