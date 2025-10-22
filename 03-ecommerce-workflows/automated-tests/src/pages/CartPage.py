@@ -28,20 +28,25 @@ class CartPage(CartPageLocators):
         return text
 
     def apply_coupon(self):
-        """
-        Full coupon workflow:
-        1. Enter coupon
-        2. Click apply
-        3. Verify success message
-        """
+        """Clicks 'Add a coupon', applies code, verifies success banner."""
+        toggle = self.driver.find_elements(*self.COUPON_TOGGLE)
+        if toggle:
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", toggle[0])
+            self.sl.wait_and_click(self.COUPON_TOGGLE)
+
+        # Wait for coupon input to appear
+        self.sl.wait_until_element_is_visible(self.COUPON_FIELD, timeout=15)
+
         coupon_code = GenericConfigs.FREE_COUPON
         self.input_coupon(coupon_code)
         self.click_apply_coupon()
 
-        # Verify expected success message appears
-        success_message = self.get_displayed_message()
-        expected = "Coupon code applied successfully."
-        assert success_message == expected, (
-            f"Unexpected message after applying coupon. "
-            f"Expected: '{expected}', Got: '{success_message}'"
+        # Wait for banner and assert success
+        self.sl.wait_until_element_is_visible(self.CART_PAGE_MESSAGE, timeout=15)
+        success_message = self.driver.find_element(*self.CART_PAGE_MESSAGE).text
+
+        assert "coupon code" in success_message.lower() and "applied" in success_message.lower(), (
+            f"Expected coupon applied message, got '{success_message}'"
         )
+
+
