@@ -4,7 +4,9 @@
 # Provides actions that can be used across multiple pages (e.g., clicking the cart icon).
 
 from src.helpers.selenium_extended import SeleniumExtended
-from src.pages.HeaderLocators import HeaderLocators
+from src.pages.locators.HeaderLocators import HeaderLocators
+
+
 
 
 class Header(HeaderLocators):
