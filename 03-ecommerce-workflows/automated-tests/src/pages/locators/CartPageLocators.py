@@ -4,13 +4,13 @@
 
 from selenium.webdriver.common.by import By
 
-
 class CartPageLocators:
-    # Text field where coupon codes are entered
-    COUPON_FIELD = (By.ID, "coupon_code")
+    # Modern WooCommerce Blocks coupon toggle
+    COUPON_TOGGLE = (By.CSS_SELECTOR, "div.wc-block-components-panel__button[role='button']")
 
-    # "Apply coupon" button
-    APPLY_COUPON_BUTTON = (By.CSS_SELECTOR, "button[name='apply_coupon']")
+    # Coupon input and Apply button
+    COUPON_FIELD = (By.CSS_SELECTOR, "input#wc-block-components-totals-coupon__input-coupon")
+    APPLY_COUPON_BUTTON = (By.CSS_SELECTOR, "button.wc-block-components-totals-coupon__button")
 
-    # Message banner shown after applying a coupon
-    CART_PAGE_MESSAGE = (By.CLASS_NAME, "woocommerce-message")
+    # Confirmation message after applying coupon
+    CART_PAGE_MESSAGE = (By.CSS_SELECTOR, "div.wc-block-components-notice-banner__content")
