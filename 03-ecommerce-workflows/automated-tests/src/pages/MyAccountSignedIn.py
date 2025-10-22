@@ -1,4 +1,4 @@
-from src.selenium_extended import SeleniumExtended
+from src.helpers.selenium_extended import SeleniumExtended
 from src.pages.locators.MyAccountSignedInLocators import MyAccountSignedInLocators as L
 
 class MyAccountSignedIn:
