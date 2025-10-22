@@ -26,9 +26,11 @@ class TestE2ECheckoutGuestUser:
         # Apply free coupon once cart page is loaded (Lesson 141)
         cart.apply_coupon()
 
+        # After applying coupon
+        cart.click_proceed_to_checkout()
+
         # (The next steps remain commented placeholders for later)
         # cart.select_free_shipping()
-        # cart.click_proceed_to_checkout()
         # checkout.fill_billing_form({...})
         # checkout.click_place_order()
         # order_received.wait_for_order_received()
