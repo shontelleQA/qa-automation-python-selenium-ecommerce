@@ -1,4 +1,9 @@
-from src.selenium_extended import SeleniumExtended
+# CheckoutPage.py
+# ----------------
+# Page object for the Checkout page: handles billing, placing orders, and validation.
+
+from src.helpers.selenium_extended import SeleniumExtended
+from src.pages.locators.CheckoutPageLocators import CheckoutPageLocators
 
 class CheckoutPage:
     ENDPOINT = "/checkout/"
