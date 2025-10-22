@@ -23,8 +23,10 @@ class TestE2ECheckoutGuestUser:
         # Click cart icon from header to go to Cart page
         header.click_cart_icon()
 
+        # Apply free coupon once cart page is loaded (Lesson 141)
+        cart.apply_coupon()
+
         # (The next steps remain commented placeholders for later)
-        # cart.apply_coupon("QA100")
         # cart.select_free_shipping()
         # cart.click_proceed_to_checkout()
         # checkout.fill_billing_form({...})
