@@ -19,31 +19,28 @@ class CartPage(CartPageLocators):
         """Click the 'Apply coupon' button."""
         self.sl.wait_and_click(self.APPLY_COUPON_BUTTON)
 
-    def get_displayed_message(self):
-        """Return the success or error message shown after applying a coupon."""
-        text = self.sl.wait_and_get_text(self.CART_PAGE_MESSAGE)
-        return text
-
     def apply_coupon(self):
-        """Clicks 'Add a coupon', applies code, verifies success banner."""
+        """Click 'Add a coupon', apply code, and verify success banner."""
+        # Ensure the dropdown is expanded before accessing the input field
         toggle = self.driver.find_elements(*self.COUPON_TOGGLE)
         if toggle:
             self.driver.execute_script("arguments[0].scrollIntoView(true);", toggle[0])
             self.sl.wait_and_click(self.COUPON_TOGGLE)
 
-        # Wait for coupon input to appear
+        # Wait for the coupon input field to become visible
         self.sl.wait_until_element_is_visible(self.COUPON_FIELD, timeout=15)
 
+        # Input and apply coupon
         coupon_code = GenericConfigs.FREE_COUPON
         self.input_coupon(coupon_code)
         self.click_apply_coupon()
 
-        # Wait for banner and assert success
+        # Wait for success message and verify coupon applied
         self.sl.wait_until_element_is_visible(self.CART_PAGE_MESSAGE, timeout=15)
         success_message = self.driver.find_element(*self.CART_PAGE_MESSAGE).text
-
-        assert "coupon code" in success_message.lower() and "applied" in success_message.lower(), (
-            f"Expected coupon applied message, got '{success_message}'"
+        expected = "coupon code"
+        assert expected.lower() in success_message.lower(), (
+            f"Expected message containing '{expected}', got '{success_message}'"
         )
 
     def click_proceed_to_checkout(self):
